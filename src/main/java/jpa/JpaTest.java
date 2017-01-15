@@ -36,7 +36,7 @@ public class JpaTest {
 			List<Person> personnes = new ArrayList<Person>();
 			for(int i = 0; i < 5; i++)
 			{
-				personnes.add(new Person("nom"+i, "prenom"+i, "em"+i+"@ail.com"));
+				personnes.add(new Person("Louis "+i, "Leonard "+i, "leonard"+i+"@louis.com"));
 				manager.persist(personnes.get(i));
 			}
 				
