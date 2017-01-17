@@ -26,16 +26,24 @@ public class JpaTest {
 		EntityManager manager = factory.createEntityManager();
 		JpaTest test = new JpaTest(manager);
 
+		// Ouverture de la transaction
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-			try {
-				test.createPerson();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		
+		//Instanciation et persistence des objets
+		try {
+			test.createPerson();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		// Fermeture de la transaction
 		tx.commit();
-
+		
+		//Affichage des personnes présentent en base
 		test.listPersons();
+		
+		//Fermeture de l'unité de travail JPA
 		manager.close();
 		System.out.println("done");
 	}

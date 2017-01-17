@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @DiscriminatorValue("C")
 public class Chauffage extends SmartDevice {
-	long id;
+//	long id;
 	double puissance;
 	
 	public Chauffage() {
@@ -13,15 +13,15 @@ public class Chauffage extends SmartDevice {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Id
-	@GeneratedValue
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
+//	@Id
+//	@GeneratedValue
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
 	
 	public double getPuissance() {
 		return puissance;

@@ -14,8 +14,8 @@ public class Maison {
 	long id;
 	long taille;
 	int nbrePiece;
-	List<Chauffage> chauffages;
-	List<EquipementElectronique> EquipementElectroniques;	
+	List<SmartDevice> chauffages;
+	List<SmartDevice> EquipementElectroniques;	
 	List<Person> habitants;
 	
 	public long getTaille() {
@@ -54,20 +54,20 @@ public class Maison {
 	}
 
 	@OneToMany(mappedBy="maison", cascade={CascadeType.REMOVE, CascadeType.REFRESH})
-	public List<Chauffage> getChauffages() {
+	public List<SmartDevice> getChauffages() {
 		return chauffages;
 	}
 
-	public void setChauffages(List<Chauffage> chauffages) {
+	public void setChauffages(List<SmartDevice> chauffages) {
 		this.chauffages = chauffages;
 	}
 
 	@OneToMany(mappedBy="maison", cascade={CascadeType.REMOVE, CascadeType.REFRESH})
-	public List<EquipementElectronique> getEquipementElectroniques() {
+	public List<SmartDevice> getEquipementElectroniques() {
 		return EquipementElectroniques;
 	}
 
-	public void setEquipementElectroniques(List<EquipementElectronique> equipementElectroniques) {
+	public void setEquipementElectroniques(List<SmartDevice> equipementElectroniques) {
 		EquipementElectroniques = equipementElectroniques;
 	}
 
