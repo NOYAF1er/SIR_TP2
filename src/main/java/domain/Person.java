@@ -9,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Person {
@@ -22,10 +20,10 @@ public class Person {
 	String prenom;
 	String email;
 	
-	@ManyToOne
-	Person person;
+	@ManyToMany
+	List<Person> persons;
 	
-	@OneToMany(mappedBy="person", cascade={CascadeType.REFRESH})
+	@ManyToMany(mappedBy="persons", cascade={CascadeType.REFRESH})
 	List<Person> amis;
 
 	@ManyToMany
@@ -105,12 +103,12 @@ public class Person {
 		this.id = id;
 	}
 
-	public Person getPerson() {
-		return person;
+	public List<Person> getPerson() {
+		return persons;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setPerson(List<Person> person) {
+		this.persons = person;
 	}
 
 	@Override

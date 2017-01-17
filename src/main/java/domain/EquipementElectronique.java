@@ -1,20 +1,29 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
-public class EquipementElectronique {
-	@Id
-	@GeneratedValue
+@DiscriminatorValue("EE")
+public class EquipementElectronique extends SmartDevice {
+
 	long id;
 	
 	double consoMoyenne;
 	
-	@ManyToOne
-	Maison maison;
+	public EquipementElectronique() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Id
+	@GeneratedValue
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public double getConsoMoyenne() {
 		return consoMoyenne;
@@ -23,14 +32,5 @@ public class EquipementElectronique {
 	public void setConsoMoyenne(double consoMoyenne) {
 		this.consoMoyenne = consoMoyenne;
 	}
-
-	public Maison getMaison() {
-		return maison;
-	}
-
-	public void setMaison(Maison maison) {
-		this.maison = maison;
-	}
-	
 	
 }

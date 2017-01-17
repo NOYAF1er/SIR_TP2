@@ -11,24 +11,34 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Maison {
-	@Id
-	@GeneratedValue
 	long id;
-	
 	long taille;
 	int nbrePiece;
-	
-	@OneToMany(mappedBy="maison", cascade={CascadeType.REMOVE, CascadeType.REFRESH})
 	List<Chauffage> chauffages;
-
-	@OneToMany(mappedBy="maison", cascade={CascadeType.REMOVE, CascadeType.REFRESH})
 	List<EquipementElectronique> EquipementElectroniques;	
-	
-	@ManyToMany(mappedBy="residences")
 	List<Person> habitants;
 	
 	public long getTaille() {
 		return taille;
+	}
+
+	@Id
+	@GeneratedValue
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	@ManyToMany(mappedBy="residences")
+	public List<Person> getHabitants() {
+		return habitants;
+	}
+
+	public void setHabitants(List<Person> habitants) {
+		this.habitants = habitants;
 	}
 
 	public void setTaille(long taille) {
@@ -43,6 +53,7 @@ public class Maison {
 		this.nbrePiece = nbrePiece;
 	}
 
+	@OneToMany(mappedBy="maison", cascade={CascadeType.REMOVE, CascadeType.REFRESH})
 	public List<Chauffage> getChauffages() {
 		return chauffages;
 	}
@@ -51,6 +62,7 @@ public class Maison {
 		this.chauffages = chauffages;
 	}
 
+	@OneToMany(mappedBy="maison", cascade={CascadeType.REMOVE, CascadeType.REFRESH})
 	public List<EquipementElectronique> getEquipementElectroniques() {
 		return EquipementElectroniques;
 	}

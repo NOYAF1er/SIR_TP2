@@ -1,35 +1,34 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
-public class Chauffage {
-	@Id
-	@GeneratedValue
+@DiscriminatorValue("C")
+public class Chauffage extends SmartDevice {
 	long id;
-	
 	double puissance;
 	
-	@ManyToOne
-	Maison maison;
+	public Chauffage() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	@Id
+	@GeneratedValue
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public double getPuissance() {
 		return puissance;
 	}
 
 	public void setPuissance(double puissance) {
 		this.puissance = puissance;
-	}
-
-	public Maison getMaison() {
-		return maison;
-	}
-
-	public void setMaison(Maison maison) {
-		this.maison = maison;
 	}
 	
 }

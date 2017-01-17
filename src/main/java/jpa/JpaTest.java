@@ -1,6 +1,5 @@
 package jpa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -29,20 +28,14 @@ public class JpaTest {
 
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
-		// Person personne = new Person("nom", "prenom", "em@ail.com");
-		// manager.persist(personne);
-
-		try {
-			test.createPerson();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			try {
+				test.createPerson();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		tx.commit();
 
-		test.listEmployees();
-
-		// TODOs
-
+		test.listPersons();
 		manager.close();
 		System.out.println("done");
 	}
@@ -58,7 +51,7 @@ public class JpaTest {
 		}
 	}
 
-	private void listEmployees() {
+	private void listPersons() {
 		List<Person> resultList = manager.createQuery("Select a From Person a", Person.class).getResultList();
 		System.out.println("num of employess:" + resultList.size());
 		for (Person next : resultList) {
